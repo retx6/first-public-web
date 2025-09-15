@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    background: #2c2c2c;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-screen {
+    background: linear-gradient(135deg, rgba(50, 50, 50, 0.9), rgba(80, 80, 80, 0.8));
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.video-screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.balloons {
+    position: absolute;
+    top: -150px;
+    left: -100px;
+    font-size: 4em;
+    animation: float 3s ease-in-out infinite;
+}
+
+.balloons2 {
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    font-size: 3.5em;
+    animation: float 4s ease-in-out infinite reverse;
+}
+
+.gift {
+    position: absolute;
+    bottom: -100px;
+    left: -50px;
+    font-size: 2.5em;
+    animation: bounce 2s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.title {
+    font-size: 3em;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+    to { text-shadow: 0 0 40px rgba(255, 255, 255, 1); }
+}
+
+.input-box {
+    padding: 20px 30px;
+    font-size: 1.5em;
+    border: 2px solid #666;
+    border-radius: 25px;
+    background: rgba(60, 60, 60, 0.8);
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    outline: none;
+    transition: all 0.3s;
+    width: 300px;
+}
+
+.input-box:focus {
+    border-color: #999;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    background: rgba(80, 80, 80, 0.9);
+}
+
+.hint {
+    color: #ccc;
+    font-size: 1.1em;
+    margin-top: 15px;
+    opacity: 0.8;
+}
+
+.name-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5em;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #a8edea);
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 3s ease infinite;
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 50% 100%; }
+    75% { background-position: 0% 50%; }
+    100% { background-position: 50% 0%; }
+}
+
+.controls {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+.share-btn, .restart-btn {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.restart-btn {
+    background: linear-gradient(45deg, #96ceb4, #feca57);
+}
+
+.share-btn:hover, .restart-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.5);
+}
+
+.confetti {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    z-index: 5;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2em;
+    }
+    
+    .input-box {
+        width: 250px;
+        font-size: 1.2em;
+    }
+    
+    .name-overlay {
+        font-size: 3em;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+}
